@@ -404,49 +404,45 @@ function generateSummaryImage(details, code) {
     const fileName = `ThiepCuoi_${(details.TEN_CHURE || 'ChuRe').replace(/\s+/g, '_')}_${(details.TEN_CODAU || 'CoDau').replace(/\s+/g, '_')}.png`;
     const imageFile = dataURLtoFile(dataURL, fileName);
     
-    // --- Nút GỬI ẢNH QUA ZALO (Web Share API) ---
-    document.getElementById('btnShareZalo').onclick = async () => {
-        const tenDauRe = (details.TEN_CHURE || '') + ' & ' + (details.TEN_CODAU || '');
-        
-        // Kiểm tra trình duyệt có hỗ trợ chia sẻ file không
+    // --- Nút Tải Ảnh (Tương thích điện thoại) ---
+    document.getElementById('btnDownloadImg').onclick = async () => {
+        // Cách 1: Web Share API (điện thoại) — mở menu Lưu/Chia sẻ
         if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
             try {
                 await navigator.share({
-                    title: 'Phiếu thông tin thiệp cưới - ' + tenDauRe,
-                    text: 'Thông tin thiệp cưới ' + tenDauRe + ' - Gửi cho Thiệp Cưới An Như',
+                    title: 'Phiếu thông tin thiệp cưới',
                     files: [imageFile]
                 });
+                return;
             } catch (err) {
-                if (err.name !== 'AbortError') {
-                    // Nếu lỗi (không phải do người dùng hủy), fallback tải ảnh
-                    downloadAndOpenZalo();
-                }
+                // Người dùng hủy hoặc lỗi → thử cách khác
             }
-        } else {
-            // Trình duyệt không hỗ trợ Web Share → tải ảnh + mở Zalo
-            downloadAndOpenZalo();
         }
-    };
-    
-    function downloadAndOpenZalo() {
-        // Tải ảnh về máy
-        const link = document.createElement('a');
-        link.download = fileName;
-        link.href = dataURL;
-        link.click();
         
-        // Sau 1 giây mở Zalo
-        setTimeout(() => {
-            alert('Ảnh đã được tải về máy!\n\nBước tiếp: Mở Zalo → Gửi ảnh vừa tải cho số 0369980993 (An Như)');
-            window.open('https://zalo.me/0369980993', '_blank');
-        }, 1000);
-    }
-    
-    // --- Nút Tải Ảnh ---
-    document.getElementById('btnDownloadImg').onclick = () => {
-        const link = document.createElement('a');
-        link.download = fileName;
-        link.href = dataURL;
-        link.click();
+        // Cách 2: Tạo blob URL và tải (máy tính)
+        try {
+            const blob = await (await fetch(dataURL)).blob();
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = fileName;
+            link.href = blobUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+        } catch (err) {
+            // Cách 3: Mở ảnh trên tab mới → nhấn giữ để lưu
+            const newTab = window.open();
+            if (newTab) {
+                newTab.document.write(`
+                    <html><head><title>Ảnh Thiệp Cưới</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#FFF2F5;flex-direction:column;font-family:sans-serif;}
+                    img{max-width:95%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+                    p{color:#8C6D72;margin-top:16px;font-size:14px;}</style></head>
+                    <body><img src="${dataURL}"><p>📌 Nhấn giữ ảnh → Lưu ảnh về máy</p></body></html>
+                `);
+            }
+        }
     };
 }
