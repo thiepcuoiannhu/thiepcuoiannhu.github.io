@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Nhập Thông Tin - Thiệp Cưới An Như</title>
+    <!-- Font chữ sang trọng từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wedding-bg-decor decor-top-left"></div>
+    <div class="wedding-bg-decor decor-bottom-right"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="logo-title">Thiệp Cưới An Như</h1>
+            <p class="subtitle">Phiếu Cung Cấp Thông Tin In Thiệp Cưới</p>
+            <p class="desc">Vui lòng điền đầy đủ và chính xác thông tin dưới đây. Hệ thống sẽ tự động đồng bộ sang CorelDRAW để điền thông tin in thiệp.</p>
+        </header>
+
+        <form id="weddingForm" class="wedding-form">
+            <!-- 1. THÔNG TIN GIA ĐÌNH SONG THÂN -->
+            <section class="form-section card">
+                <h2 class="section-title">1. Thông Tin Song Thân Hai Bên</h2>
+                <div class="grid-2">
+                    <!-- Nhà Trai -->
+                    <div class="family-box groom-family-bg">
+                        <h3 class="box-subtitle groom-color">HỌ NHÀ TRAI</h3>
+                        <div class="input-group">
+                            <label for="ong_nha_trai">Họ tên Cha (Ông):</label>
+                            <input type="text" id="ong_nha_trai" name="ONG_NHA_TRAI" placeholder="Ví dụ: Nguyễn Văn Phú">
+                        </div>
+                        <div class="input-group">
+                            <label for="ba_nha_trai">Họ tên Mẹ (Bà):</label>
+                            <input type="text" id="ba_nha_trai" name="BA_NHA_TRAI" placeholder="Ví dụ: Nguyễn Thị Kim Dung">
+                        </div>
+                        <div class="input-group">
+                            <label for="dc_nha_trai">Địa chỉ nhà trai (in lên thiệp):</label>
+                            <input type="text" id="dc_nha_trai" name="DC_NHA_TRAI" placeholder="Ví dụ: 123 Đường 3/2, Q.10, TP.HCM">
+                        </div>
+                    </div>
+
+                    <!-- Nhà Gái -->
+                    <div class="family-box bride-family-bg">
+                        <h3 class="box-subtitle bride-color">HỌ NHÀ GÁI</h3>
+                        <div class="input-group">
+                            <label for="ong_nha_gai">Họ tên Cha (Ông):</label>
+                            <input type="text" id="ong_nha_gai" name="ONG_NHA_GAI" placeholder="Ví dụ: Đỗ Văn Hảo">
+                        </div>
+                        <div class="input-group">
+                            <label for="ba_nha_gai">Họ tên Mẹ (Bà):</label>
+                            <input type="text" id="ba_nha_gai" name="BA_NHA_GAI" placeholder="Ví dụ: Nguyễn Thị Lan">
+                        </div>
+                        <div class="input-group">
+                            <label for="dc_nha_gai">Địa chỉ nhà gái (in lên thiệp):</label>
+                            <input type="text" id="dc_nha_gai" name="DC_NHA_GAI" placeholder="Ví dụ: 456 CMT8, Q.3, TP.HCM">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. THÔNG TIN CÔ DÂU & CHÚ RỂ -->
+            <section class="form-section card">
+                <h2 class="section-title">2. Thông Tin Cô Dâu & Chú Rể</h2>
+                <div class="grid-2">
+                    <!-- Chú Rể -->
+                    <div class="family-box groom-family-bg">
+                        <h3 class="box-subtitle groom-color">THÔNG TIN CHÚ RỂ</h3>
+                        <div class="input-group">
+                            <label for="ten_chure">Tên Chú Rể (Chữ hoa đầy đủ):</label>
+                            <input type="text" id="ten_chure" name="TEN_CHURE" placeholder="Ví dụ: NGUYỄN VĂN PHƯƠNG">
+                        </div>
+                        <div class="input-group">
+                            <label for="vai_ve_chure">Vai vế (Trong gia đình):</label>
+                            <input type="text" id="vai_ve_chure" name="VAI_VE_CHURE" placeholder="Ví dụ: Trưởng nam, Thứ nam, Út nam...">
+                        </div>
+                    </div>
+
+                    <!-- Cô Dâu -->
+                    <div class="family-box bride-family-bg">
+                        <h3 class="box-subtitle bride-color">THÔNG TIN CÔ DÂU</h3>
+                        <div class="input-group">
+                            <label for="ten_codau">Tên Cô Dâu (Chữ hoa đầy đủ):</label>
+                            <input type="text" id="ten_codau" name="TEN_CODAU" placeholder="Ví dụ: ĐỖ MINH PHƯƠNG">
+                        </div>
+                        <div class="input-group">
+                            <label for="vai_ve_codau">Vai vế (Trong gia đình):</label>
+                            <input type="text" id="vai_ve_codau" name="VAI_VE_CODAU" placeholder="Ví dụ: Trưởng nữ, Ái nữ, Út nữ...">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. THÔNG TIN HÔN LỄ (LỄ GIA TIÊN) -->
+            <section class="form-section card">
+                <h2 class="section-title">3. Thông Tin Hôn Lễ (Lễ Gia Tiên)</h2>
+                <div class="family-box">
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label for="loai_le">Loại Lễ (In lên thiệp):</label>
+                            <select id="loai_le" name="LOAI_LE">
+                                <option value="LỄ THÀNH HÔN">LỄ THÀNH HÔN (Chung cả 2 bên / Nhà trai)</option>
+                                <option value="LỄ TÂN HÔN">LỄ TÂN HÔN (Nhà trai rước dâu)</option>
+                                <option value="LỄ VU QUY">LỄ VU QUY (Nhà gái tiễn dâu)</option>
+                                <option value="LỄ BÁO HỶ">LỄ BÁO HỶ</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="gia_tien_tai">Lễ cử hành tại:</label>
+                            <input type="text" id="gia_tien_tai" name="GIA_TIEN_TAI" placeholder="Ví dụ: Tư gia nhà trai, Tư gia nhà gái...">
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-top: 15px;">
+                        <div class="input-group">
+                            <label for="date_le_solar">Chọn ngày Dương Lịch làm lễ:</label>
+                            <input type="date" id="date_le_solar">
+                        </div>
+                        <div class="input-group">
+                            <label for="gio_le">Giờ làm lễ (Giờ rước dâu):</label>
+                            <input type="text" id="gio_le" name="GIO_LE" placeholder="Ví dụ: 10 giờ 30">
+                        </div>
+                    </div>
+
+                    <!-- Các trường tự động tính toán (Hệ thống tự động điền) -->
+                    <div class="auto-calc-box" style="margin-top: 20px;">
+                        <h4 class="calc-box-title">✨ Hệ thống tự động tính ngày/thứ:</h4>
+                        
+                        <div class="grid-3">
+                            <div class="input-group">
+                                <label for="thu_le">Thứ:</label>
+                                <input type="text" id="thu_le" name="THU_LE" placeholder="Sẽ tự động điền">
+                            </div>
+                            <div class="input-group">
+                                <label for="ngay_le_show">Ngày Dương Lịch (In thiệp):</label>
+                                <input type="text" id="ngay_le_show" placeholder="Ví dụ: ngày 18 tháng 10 năm 2026" readonly>
+                                <!-- Các trường ẩn để gửi lên Corel -->
+                                <input type="hidden" id="ngay_le" name="NGAY_LE">
+                                <input type="hidden" id="thang_le" name="THANG_LE">
+                                <input type="hidden" id="nam_le" name="NAM_LE">
+                            </div>
+                            <div class="input-group">
+                                <label for="ngay_al_le_show">Ngày Âm Lịch (In thiệp):</label>
+                                <input type="text" id="ngay_al_le_show" placeholder="Ví dụ: ngày 08 tháng 09 (AL)" readonly>
+                                <!-- Các trường ẩn để gửi lên Corel -->
+                                <input type="hidden" id="ngay_al_le" name="NGAY_AL_LE">
+                                <input type="hidden" id="thang_al_le" name="THANG_AL_LE">
+                                <input type="hidden" id="nam_al_le" name="NAM_AL_LE">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. THÔNG TIN TIỆC CHIÊU ĐÃI -->
+            <section class="form-section card">
+                <h2 class="section-title">4. Thông Tin Tiệc Chiêu Đãi (Ăn Tiệc)</h2>
+                <div class="family-box">
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label for="tiec_tai">Địa điểm đãi tiệc (Tên nhà hàng/Tư gia):</label>
+                            <input type="text" id="tiec_tai" name="TIEC_TAI" placeholder="Ví dụ: Nhà hàng Melisa (Sảnh Rose)...">
+                        </div>
+                        <div class="input-group">
+                            <label for="dc_tiec">Địa chỉ chi tiết nơi đãi tiệc:</label>
+                            <input type="text" id="dc_tiec" name="DC_TIEC" placeholder="Ví dụ: 85 Thoại Ngọc Hầu, Tân Phú, TP.HCM">
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-top: 15px;">
+                        <div class="input-group">
+                            <label for="date_tiec_solar">Chọn ngày Dương Lịch đãi tiệc:</label>
+                            <input type="date" id="date_tiec_solar">
+                        </div>
+                        <div class="input-group">
+                            <label for="gio_tiec">Giờ đón khách / Khai tiệc:</label>
+                            <input type="text" id="gio_tiec" name="GIO_TIEC" placeholder="Ví dụ: Đón khách lúc 17g30 - Khai tiệc 18g00">
+                        </div>
+                    </div>
+
+                    <!-- Các trường tự động tính toán (Hệ thống tự động điền) -->
+                    <div class="auto-calc-box" style="margin-top: 20px;">
+                        <h4 class="calc-box-title">✨ Hệ thống tự động tính ngày/thứ:</h4>
+                        
+                        <div class="grid-3">
+                            <div class="input-group">
+                                <label for="thu_tiec">Thứ:</label>
+                                <input type="text" id="thu_tiec" name="THU_TIEC" placeholder="Sẽ tự động điền">
+                            </div>
+                            <div class="input-group">
+                                <label for="ngay_tiec_show">Ngày Dương Lịch (In thiệp):</label>
+                                <input type="text" id="ngay_tiec_show" placeholder="Ví dụ: ngày 18 tháng 10 năm 2026" readonly>
+                                <!-- Các trường ẩn để gửi lên Corel -->
+                                <input type="hidden" id="ngay_tiec" name="NGAY_TIEC">
+                                <input type="hidden" id="thang_tiec" name="THANG_TIEC">
+                                <input type="hidden" id="nam_tiec" name="NAM_TIEC">
+                            </div>
+                            <div class="input-group text-muted-opacity">
+                                <label>Ngày Âm Lịch (Nếu thiệp tiệc có ghi):</label>
+                                <input type="text" id="ngay_al_tiec_show" placeholder="Không cần in hoặc tự động hiện" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cam kết đồng ý -->
+            <section class="form-section card agreement-card">
+                <div class="agreement-box">
+                    <p class="agreement-text">Bản demo đầu tiên bên em sẽ dựa hoàn toàn trên các thông tin anh/chị cung cấp hôm nay. Nếu có thêm ý tưởng mới sau khi duyệt demo, đội ngũ <strong>Thiệp Cưới An Như</strong> sẽ hỗ trợ chỉnh sửa đến khi nào mình ưng mới chốt in nhưng thời gian hoàn thiện có thể kéo dài hơn dự kiến. Mình giúp em chia sẻ đầy đủ mọng muốn ngay từ đầu nhé.</p>
+                </div>
+                <label class="agreement-check">
+                    <input type="checkbox" id="agreeCheckbox">
+                    <span>Tôi đồng ý</span>
+                </label>
+            </section>
+
+            <!-- Nút gửi thông tin -->
+            <div class="form-actions">
+                <button type="submit" id="btnSubmit" class="btn-primary" disabled>Gửi Thông Tin In Thiệp Cưới</button>
+            </div>
+        </form>
+
+        <!-- Màn hình thông báo gửi thành công -->
+        <div id="successScreen" class="success-screen hidden card">
+            <div class="success-icon">✓</div>
+            <h2 class="success-title">Gửi Thông Tin Thành Công!</h2>
+            <p>Dữ liệu thiệp cưới đã được gửi trực tiếp lên hệ thống in của <strong>Thiệp Cưới An Như</strong>.</p>
+            <div class="code-box">
+                <span>THIỆP CƯỚI CỦA:</span>
+                <strong id="syncCode" style="font-size:1.3rem; letter-spacing:0;"></strong>
+            </div>
+            <p class="success-note">Vui lòng tải ảnh bên dưới và gửi qua Zalo cho An Như để điền thiệp ngay lập tức.</p>
+
+            <!-- Ảnh tổng hợp thông tin -->
+            <div class="preview-image-box" id="previewBox">
+                <img id="previewImg" alt="Thông tin thiệp cưới">
+            </div>
+
+            <!-- Nút hành động -->
+            <div class="success-actions">
+                <button type="button" class="btn-primary" id="btnDownloadImg">📥 Tải ảnh thông tin về máy</button>
+                <a id="btnZalo" href="https://zalo.me/0369980993" target="_blank" class="btn-secondary" style="display: block; text-decoration: none;">💬 Gửi qua Zalo cho An Như (0369980993)</a>
+                <button type="button" class="btn-secondary" onclick="window.location.reload()">Nhập phiếu mới</button>
+            </div>
+        </div>
+        
+        <!-- Canvas ẩn để vẽ ảnh tổng hợp thông tin -->
+        <canvas id="summaryCanvas" style="display:none;"></canvas>
+    </div>
+
+    <footer class="footer-note">
+        <p>&copy; 2026 Thiệp Cưới An Như - Automated Printing Systems</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
