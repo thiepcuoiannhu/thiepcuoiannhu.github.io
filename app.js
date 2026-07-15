@@ -189,7 +189,10 @@ document.getElementById('weddingForm').addEventListener('submit', async (e) => {
             THU_TIEC: formData.get('THU_TIEC').trim(),
             NGAY_TIEC: formData.get('NGAY_TIEC').trim(),
             THANG_TIEC: formData.get('THANG_TIEC').trim(),
-            NAM_TIEC: formData.get('NAM_TIEC').trim()
+            NAM_TIEC: formData.get('NAM_TIEC').trim(),
+            IN_SO_DO: formData.get('IN_SO_DO') ? 'Có' : 'Không',
+            IN_QR_CODE: formData.get('IN_QR_CODE') ? 'Có' : 'Không',
+            TOC_DO_IN: formData.get('TOC_DO_IN') || 'In tiết kiệm (6-8 ngày)'
         };
         
         // Không sử dụng danh sách khách mời (bỏ phần 5)
@@ -377,6 +380,13 @@ function generateSummaryImage(details, code) {
         { label: 'Giờ', value: details.GIO_TIEC },
         { label: 'Địa điểm', value: details.TIEC_TAI },
         { label: 'Địa chỉ', value: details.DC_TIEC },
+    ], y + 10);
+    
+    // --- PHẦN 5: YÊU CẦU THÊM ---
+    y = drawSection('YÊU CẦU IN & BẢN ĐỒ', [
+        { label: 'In sơ đồ chỉ đường', value: details.IN_SO_DO },
+        { label: 'In QR-code chỉ đường', value: details.IN_QR_CODE },
+        { label: 'Tốc độ in', value: details.TOC_DO_IN }
     ], y + 10);
     
     // --- Footer ---
