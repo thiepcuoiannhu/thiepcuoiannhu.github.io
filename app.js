@@ -390,10 +390,62 @@ function generateSummaryImage(details, code) {
     const previewImg = document.getElementById('previewImg');
     previewImg.src = dataURL;
     
-    // --- Gắn sự kiện nút Tải Ảnh ---
+    // --- Chuyển dataURL thành File để chia sẻ ---
+    function dataURLtoFile(dataurl, filename) {
+        const arr = dataurl.split(',');
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) u8arr[n] = bstr.charCodeAt(n);
+        return new File([u8arr], filename, { type: mime });
+    }
+    
+    const fileName = `ThiepCuoi_${(details.TEN_CHURE || 'ChuRe').replace(/\s+/g, '_')}_${(details.TEN_CODAU || 'CoDau').replace(/\s+/g, '_')}.png`;
+    const imageFile = dataURLtoFile(dataURL, fileName);
+    
+    // --- Nút GỬI ẢNH QUA ZALO (Web Share API) ---
+    document.getElementById('btnShareZalo').onclick = async () => {
+        const tenDauRe = (details.TEN_CHURE || '') + ' & ' + (details.TEN_CODAU || '');
+        
+        // Kiểm tra trình duyệt có hỗ trợ chia sẻ file không
+        if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
+            try {
+                await navigator.share({
+                    title: 'Phiếu thông tin thiệp cưới - ' + tenDauRe,
+                    text: 'Thông tin thiệp cưới ' + tenDauRe + ' - Gửi cho Thiệp Cưới An Như',
+                    files: [imageFile]
+                });
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    // Nếu lỗi (không phải do người dùng hủy), fallback tải ảnh
+                    downloadAndOpenZalo();
+                }
+            }
+        } else {
+            // Trình duyệt không hỗ trợ Web Share → tải ảnh + mở Zalo
+            downloadAndOpenZalo();
+        }
+    };
+    
+    function downloadAndOpenZalo() {
+        // Tải ảnh về máy
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = dataURL;
+        link.click();
+        
+        // Sau 1 giây mở Zalo
+        setTimeout(() => {
+            alert('Ảnh đã được tải về máy!\n\nBước tiếp: Mở Zalo → Gửi ảnh vừa tải cho số 0369980993 (An Như)');
+            window.open('https://zalo.me/0369980993', '_blank');
+        }, 1000);
+    }
+    
+    // --- Nút Tải Ảnh ---
     document.getElementById('btnDownloadImg').onclick = () => {
         const link = document.createElement('a');
-        link.download = `ThiepCuoi_AnNhu_${code}.png`;
+        link.download = fileName;
         link.href = dataURL;
         link.click();
     };
