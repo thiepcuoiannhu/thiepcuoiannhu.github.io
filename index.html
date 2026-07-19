@@ -73,7 +73,13 @@
                         </div>
                         <div class="input-group">
                             <label for="vai_ve_chure">Vai vế (Trong gia đình):</label>
-                            <input type="text" id="vai_ve_chure" name="VAI_VE_CHURE" placeholder="Ví dụ: Trưởng nam, Thứ nam, Út nam...">
+                            <div class="quick-tags">
+                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Trưởng nam'">Trưởng nam</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Thứ nam'">Thứ nam</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Út nam'">Út nam</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Quý nam'">Quý nam</span>
+                            </div>
+                            <input type="text" id="vai_ve_chure" name="VAI_VE_CHURE" placeholder="Hoặc tự nhập: Trưởng nam...">
                         </div>
                     </div>
 
@@ -86,7 +92,13 @@
                         </div>
                         <div class="input-group">
                             <label for="vai_ve_codau">Vai vế (Trong gia đình):</label>
-                            <input type="text" id="vai_ve_codau" name="VAI_VE_CODAU" placeholder="Ví dụ: Trưởng nữ, Ái nữ, Út nữ...">
+                            <div class="quick-tags">
+                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Trưởng nữ'">Trưởng nữ</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Thứ nữ'">Thứ nữ</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Út nữ'">Út nữ</span>
+                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Ái nữ'">Ái nữ</span>
+                            </div>
+                            <input type="text" id="vai_ve_codau" name="VAI_VE_CODAU" placeholder="Hoặc tự nhập: Trưởng nữ...">
                         </div>
                     </div>
                 </div>

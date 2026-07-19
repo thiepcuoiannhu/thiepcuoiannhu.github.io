@@ -498,3 +498,29 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
     align-items: center;
     gap: 4px;
 }
+
+/* Quick Tags cho Chọn Nhanh Vai Vế */
+.quick-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.tag {
+    background: var(--primary-light);
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+.tag:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.tag:active {
+    transform: scale(0.95);
+}
