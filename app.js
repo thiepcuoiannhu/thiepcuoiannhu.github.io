@@ -246,9 +246,9 @@ function generateSummaryImage(details, code) {
     const canvas = document.getElementById('summaryCanvas');
     const ctx = canvas.getContext('2d');
     
-    // Kích thước chuẩn 9:16 cho điện thoại (1080x1920 pixel)
+    // Kích thước chuẩn 9:16 cho điện thoại (1080x1920 pixel) nhưng tăng lên 2200 để vừa địa chỉ
     const W = 1080;
-    const H = 1920;
+    const H = 2200;
     canvas.width = W;
     canvas.height = H;
     
@@ -345,11 +345,13 @@ function generateSummaryImage(details, code) {
     y = drawSection('HỌ NHÀ TRAI', [
         { label: 'Cha (Ông)', value: details.ONG_NHA_TRAI },
         { label: 'Mẹ (Bà)', value: details.BA_NHA_TRAI },
+        { label: 'Địa chỉ', value: details.DC_NHA_TRAI },
     ], y);
     
     y = drawSection('HỌ NHÀ GÁI', [
         { label: 'Cha (Ông)', value: details.ONG_NHA_GAI },
         { label: 'Mẹ (Bà)', value: details.BA_NHA_GAI },
+        { label: 'Địa chỉ', value: details.DC_NHA_GAI },
     ], y + 10);
     
     // --- PHẦN 2: CÔ DÂU & CHÚ RỂ ---
