@@ -72,14 +72,13 @@
                             <input type="text" id="ten_chure" name="TEN_CHURE" placeholder="Ví dụ: NGUYỄN VĂN PHƯƠNG">
                         </div>
                         <div class="input-group">
-                            <label for="vai_ve_chure">Vai vế (Trong gia đình):</label>
+                            <label>Vai vế (Trong gia đình):</label>
                             <div class="quick-tags">
-                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Trưởng nam'">Trưởng nam</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Thứ nam'">Thứ nam</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Út nam'">Út nam</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_chure').value='Quý nam'">Quý nam</span>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CHURE" value="Trưởng nam" style="display:none;" required> <span class="tag">Trưởng nam</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CHURE" value="Thứ nam" style="display:none;"> <span class="tag">Thứ nam</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CHURE" value="Út nam" style="display:none;"> <span class="tag">Út nam</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CHURE" value="Quý nam" style="display:none;"> <span class="tag">Quý nam</span></label>
                             </div>
-                            <input type="text" id="vai_ve_chure" name="VAI_VE_CHURE" placeholder="Hoặc tự nhập: Trưởng nam...">
                         </div>
                     </div>
 
@@ -91,14 +90,13 @@
                             <input type="text" id="ten_codau" name="TEN_CODAU" placeholder="Ví dụ: ĐỖ MINH PHƯƠNG">
                         </div>
                         <div class="input-group">
-                            <label for="vai_ve_codau">Vai vế (Trong gia đình):</label>
+                            <label>Vai vế (Trong gia đình):</label>
                             <div class="quick-tags">
-                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Trưởng nữ'">Trưởng nữ</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Thứ nữ'">Thứ nữ</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Út nữ'">Út nữ</span>
-                                <span class="tag" onclick="document.getElementById('vai_ve_codau').value='Ái nữ'">Ái nữ</span>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CODAU" value="Trưởng nữ" style="display:none;" required> <span class="tag">Trưởng nữ</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CODAU" value="Thứ nữ" style="display:none;"> <span class="tag">Thứ nữ</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CODAU" value="Út nữ" style="display:none;"> <span class="tag">Út nữ</span></label>
+                                <label class="tag-label"><input type="radio" name="VAI_VE_CODAU" value="Ái nữ" style="display:none;"> <span class="tag">Ái nữ</span></label>
                             </div>
-                            <input type="text" id="vai_ve_codau" name="VAI_VE_CODAU" placeholder="Hoặc tự nhập: Trưởng nữ...">
                         </div>
                     </div>
                 </div>
@@ -217,9 +215,9 @@
                 </div>
             </section>
 
-            <!-- 5. BẢN ĐỒ ĐƯỜNG ĐI -->
+            <!-- 5. DỊCH VỤ ĐI KÈM -->
             <section class="form-section card">
-                <h2 class="section-title">5. Bản Đồ Đường Đi</h2>
+                <h2 class="section-title">5. Dịch Vụ Đi Kèm</h2>
                 <div class="option-list">
                     <label class="option-item">
                         <input type="checkbox" name="IN_SO_DO" value="Có">
@@ -230,6 +228,11 @@
                         <input type="checkbox" name="IN_QR_CODE" value="Có">
                         <span class="option-text">In QR-code chỉ đường</span>
                         <span class="badge badge-green">miễn phí</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="IN_TEN_KHACH" value="Có">
+                        <span class="option-text">In tên khách lên thiệp <br><small style="color:var(--text-light); font-size:0.8rem; font-weight:normal;">(Tiết kiệm thời gian ghi và in)</small></span>
+                        <span class="badge badge-pink" style="text-align:right;">+1800đ/thiệp<br><small style="font-size:0.7rem; opacity:0.8;">(áp dụng từ 500 thiệp)</small></span>
                     </label>
                 </div>
             </section>
