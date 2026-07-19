@@ -1,17 +1,19 @@
-/* Thiết kế giao diện hồng phấn - TỐI ƯU ĐIỆN THOẠI 9:16 (Mobile First) */
+/* Thiết kế giao diện tím vàng quý phái - TỐI ƯU ĐIỆN THOẠI 9:16 (Mobile First) */
 
 :root {
-    --bg-color: #FFF2F5;
-    --primary-color: #FF7B90;
-    --primary-hover: #E85B72;
-    --primary-light: #FFE2E7;
-    --text-color: #4C3034;
-    --text-light: #8C6D72;
+    --bg-color: #FAF7FC;
+    --primary-color: #5a307d; /* Tím chủ đạo */
+    --primary-hover: #482367;
+    --primary-light: #EADCF5; /* Tím nhạt */
+    --accent-color: #d4af37; /* Vàng Gold */
+    --accent-light: #967bb6; /* Tím Lavender */
+    --text-color: #382047;
+    --text-light: #685370;
     --groom-theme: #2980B9;
     --bride-theme: #E74C3C;
-    --card-bg: rgba(255, 255, 255, 0.97);
-    --border-color: #FED2DB;
-    --shadow-color: rgba(255, 123, 144, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.85); /* Nền mờ kính */
+    --border-color: #E1D5EC;
+    --shadow-color: rgba(90, 48, 125, 0.1);
 }
 
 * {
@@ -155,7 +157,7 @@ body {
 
 /* Family Box */
 .family-box {
-    background: #FFF9FA;
+    background: #FAF5FF;
     border-radius: 10px;
     padding: 14px;
     border: 1px solid var(--border-color);
@@ -235,13 +237,13 @@ input[type="text"], input[type="date"], select {
 
 input[type="text"]:focus, input[type="date"]:focus, select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(255, 123, 144, 0.2);
+    box-shadow: 0 0 0 3px rgba(90, 48, 125, 0.2);
 }
 
 /* Buttons */
 .btn-primary {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, var(--primary-color), #E85B72);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-light));
     color: white;
     padding: 14px 20px;
     border-radius: 10px;
@@ -249,7 +251,7 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 123, 144, 0.3);
+    box-shadow: 0 4px 15px rgba(90, 48, 125, 0.3);
     transition: all 0.2s ease;
     width: 100%;
     text-align: center;
@@ -257,7 +259,7 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
 
 .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(255, 123, 144, 0.4);
+    box-shadow: 0 6px 20px rgba(90, 48, 125, 0.4);
 }
 
 .btn-primary:active {
@@ -438,7 +440,7 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
     display: flex;
     align-items: center;
     padding: 12px 14px;
-    background: #FFF9FA;
+    background: #FAF5FF;
     border: 1px solid var(--border-color);
     border-radius: 10px;
     cursor: pointer;
@@ -447,7 +449,7 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
 
 .option-item:hover {
     border-color: var(--primary-color);
-    background: #FFF2F5;
+    background: #F2E6FF;
 }
 
 .option-item input[type="checkbox"],
@@ -474,8 +476,8 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
 }
 
 .badge-pink {
-    background-color: #FEE2E6;
-    color: #D65E73;
+    background-color: #F5EEF8;
+    color: var(--primary-color);
 }
 
 .badge-green {

@@ -271,7 +271,7 @@
                 <span>THIỆP CƯỚI CỦA:</span>
                 <strong id="syncCode" style="font-size:1.3rem; letter-spacing:0;"></strong>
             </div>
-            <p class="success-note">Vui lòng tải ảnh bên dưới và gửi qua Zalo cho An Như để điền thiệp ngay lập tức.</p>
+            <p class="success-note">Vui lòng bấm nút Gửi Phiếu Qua Zalo bên dưới để gửi An Như điền thiệp ngay lập tức.</p>
 
             <!-- Ảnh tổng hợp thông tin -->
             <div class="preview-image-box" id="previewBox">
@@ -280,10 +280,14 @@
 
             <!-- Nút hành động -->
             <div class="success-actions">
-                <p style="font-size:0.85rem; color:#8C6D72; text-align:center; margin-bottom:4px;">📌 Tải ảnh thông tin về máy và gửi qua Zalo <strong>0967471576</strong></p>
-                <button type="button" class="btn-primary" id="btnDownloadImg">📥 Tải ảnh thông tin về máy</button>
-                <a href="https://zalo.me/0967471576" target="_blank" class="btn-primary" style="display:block; text-decoration:none; text-align:center; background:linear-gradient(135deg, #0068FF, #0045b5);">💬 Mở Zalo gửi cho An Như (0967471576)</a>
-                <button type="button" class="btn-secondary" onclick="window.location.reload()">Nhập phiếu mới</button>
+                <button type="button" class="btn-primary" id="btnShareZalo" style="background:linear-gradient(135deg, #0068FF, #0045b5); color:white; font-size:1.1rem; padding:15px; margin-bottom:15px; width:100%; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">💬 Gửi Phiếu Qua Zalo</button>
+                
+                <p style="font-size:0.85rem; color:#8C6D72; text-align:center; margin-bottom:8px;">(Hoặc lưu ảnh và gửi thủ công: <strong>0917039141</strong>)</p>
+                <div style="display:flex; gap:10px; margin-bottom:15px;">
+                    <button type="button" class="btn-secondary" id="btnDownloadImg" style="flex:1;">📥 Tải ảnh</button>
+                    <a href="https://zalo.me/0917039141" target="_blank" class="btn-secondary" style="flex:1; display:flex; align-items:center; justify-content:center; text-decoration:none;">💬 Mở Zalo</a>
+                </div>
+                <button type="button" class="btn-secondary" onclick="window.location.reload()" style="width:100%;">Nhập phiếu mới</button>
             </div>
         </div>
         

@@ -252,15 +252,15 @@ function generateSummaryImage(details, code) {
     canvas.width = W;
     canvas.height = H;
     
-    // --- Nền gradient hồng phấn ---
+    // --- Nền gradient tím nhạt ---
     const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-    bgGrad.addColorStop(0, '#FFF2F5');
-    bgGrad.addColorStop(1, '#FFE2E7');
+    bgGrad.addColorStop(0, '#FAF7FC');
+    bgGrad.addColorStop(1, '#EADCF5');
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, W, H);
     
     // --- Trang trí góc ---
-    ctx.fillStyle = 'rgba(255, 123, 144, 0.06)';
+    ctx.fillStyle = 'rgba(150, 123, 182, 0.06)';
     ctx.beginPath();
     ctx.arc(0, 0, 300, 0, Math.PI * 2);
     ctx.fill();
@@ -271,18 +271,18 @@ function generateSummaryImage(details, code) {
     // --- Tiêu đề ---
     let y = 80;
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#FF7B90';
+    ctx.fillStyle = '#5a307d';
     ctx.font = 'bold 52px Playfair Display, serif';
     ctx.fillText('Thiệp Cưới An Như', W / 2, y);
     
     y += 50;
-    ctx.fillStyle = '#8C6D72';
+    ctx.fillStyle = '#685370';
     ctx.font = 'italic 28px Playfair Display, serif';
     ctx.fillText('Phiếu Thông Tin In Thiệp Cưới', W / 2, y);
     
     // --- Đường kẻ trang trí ---
     y += 35;
-    ctx.strokeStyle = '#FED2DB';
+    ctx.strokeStyle = '#d4af37';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(200, y);
@@ -291,7 +291,7 @@ function generateSummaryImage(details, code) {
     
     // --- Mã đồng bộ ---
     y += 50;
-    ctx.fillStyle = '#FF7B90';
+    ctx.fillStyle = '#5a307d';
     ctx.font = 'bold 36px Outfit, sans-serif';
     ctx.fillText('MÃ ĐỒNG BỘ: ' + code, W / 2, y);
     
@@ -301,12 +301,12 @@ function generateSummaryImage(details, code) {
         
         // Tiêu đề section
         ctx.textAlign = 'left';
-        ctx.fillStyle = '#FF7B90';
+        ctx.fillStyle = '#5a307d';
         ctx.font = 'bold 32px Outfit, sans-serif';
         ctx.fillText(title, 80, currentY);
         
         currentY += 8;
-        ctx.strokeStyle = '#FED2DB';
+        ctx.strokeStyle = '#967bb6';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(80, currentY);
@@ -317,11 +317,11 @@ function generateSummaryImage(details, code) {
         
         // Các dòng thông tin
         for (let item of items) {
-            ctx.fillStyle = '#8C6D72';
+            ctx.fillStyle = '#685370';
             ctx.font = '26px Outfit, sans-serif';
             ctx.fillText(item.label + ':', 100, currentY);
             
-            ctx.fillStyle = '#4C3034';
+            ctx.fillStyle = '#382047';
             ctx.font = 'bold 28px Outfit, sans-serif';
             
             // Tự xuống dòng nếu chữ quá dài
@@ -391,7 +391,7 @@ function generateSummaryImage(details, code) {
     
     // --- Footer ---
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#8C6D72';
+    ctx.fillStyle = '#685370';
     ctx.font = '22px Outfit, sans-serif';
     ctx.fillText('Thiệp Cưới An Như — thongtinthiepcuoi.com', W / 2, H - 50);
     
@@ -414,22 +414,25 @@ function generateSummaryImage(details, code) {
     const fileName = `ThiepCuoi_${(details.TEN_CHURE || 'ChuRe').replace(/\s+/g, '_')}_${(details.TEN_CODAU || 'CoDau').replace(/\s+/g, '_')}.png`;
     const imageFile = dataURLtoFile(dataURL, fileName);
     
-    // --- Nút Tải Ảnh (Tương thích điện thoại) ---
-    document.getElementById('btnDownloadImg').onclick = async () => {
-        // Cách 1: Web Share API (điện thoại) — mở menu Lưu/Chia sẻ
+    // --- Nút Gửi Trực Tiếp Qua Zalo (Web Share API) ---
+    document.getElementById('btnShareZalo').onclick = async () => {
         if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
             try {
                 await navigator.share({
                     title: 'Phiếu thông tin thiệp cưới',
+                    text: 'Gửi An Như phiếu thông tin in thiệp',
                     files: [imageFile]
                 });
-                return;
             } catch (err) {
-                // Người dùng hủy hoặc lỗi → thử cách khác
+                console.log('Lỗi chia sẻ:', err);
             }
+        } else {
+            alert('Trình duyệt không hỗ trợ gửi trực tiếp. Vui lòng bấm "Tải ảnh" sau đó gửi qua Zalo!');
         }
-        
-        // Cách 2: Tạo blob URL và tải (máy tính)
+    };
+
+    // --- Nút Tải Ảnh Truyền Thống ---
+    document.getElementById('btnDownloadImg').onclick = async () => {
         try {
             const blob = await (await fetch(dataURL)).blob();
             const blobUrl = URL.createObjectURL(blob);
