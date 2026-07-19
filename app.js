@@ -289,11 +289,12 @@ function generateSummaryImage(details, code) {
     ctx.lineTo(W - 200, y);
     ctx.stroke();
     
-    // --- Mã đồng bộ ---
+    // --- Tên dâu rể (thay cho mã đồng bộ) ---
     y += 50;
     ctx.fillStyle = '#5a307d';
     ctx.font = 'bold 36px Outfit, sans-serif';
-    ctx.fillText('MÃ ĐỒNG BỘ: ' + code, W / 2, y);
+    const brideGroomName = (details.TEN_CHURE || 'CHÚ RỂ') + ' ❤ ' + (details.TEN_CODAU || 'CÔ DÂU');
+    ctx.fillText(brideGroomName, W / 2, y);
     
     // --- Helper: Vẽ khối thông tin ---
     function drawSection(title, items, startY, bgColor) {
