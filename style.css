@@ -1,19 +1,19 @@
 /* Thiết kế giao diện tím vàng quý phái - TỐI ƯU ĐIỆN THOẠI 9:16 (Mobile First) */
 
 :root {
-    --bg-color: #FAF7FC;
-    --primary-color: #5a307d; /* Tím chủ đạo */
-    --primary-hover: #482367;
-    --primary-light: #EADCF5; /* Tím nhạt */
-    --accent-color: #d4af37; /* Vàng Gold */
-    --accent-light: #967bb6; /* Tím Lavender */
-    --text-color: #382047;
-    --text-light: #685370;
+    --bg-color: #FCFBF8;
+    --primary-color: #C9A86A;
+    --primary-hover: #B58A4B;
+    --primary-light: #F4EFE6;
+    --accent-color: #D8C4BC;
+    --accent-light: #EAE2DE;
+    --text-color: #1E1E1E;
+    --text-light: #5F5F5F;
     --groom-theme: #2980B9;
     --bride-theme: #E74C3C;
-    --card-bg: rgba(255, 255, 255, 0.85); /* Nền mờ kính */
-    --border-color: #E1D5EC;
-    --shadow-color: rgba(90, 48, 125, 0.1);
+    --card-bg: #FFFFFF;
+    --border-color: #ECE7E1;
+    --shadow-color: rgba(30, 30, 30, 0.08);
 }
 
 * {
@@ -237,29 +237,30 @@ input[type="text"], input[type="date"], select {
 
 input[type="text"]:focus, input[type="date"]:focus, select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(90, 48, 125, 0.2);
+    box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.2);
 }
 
 /* Buttons */
 .btn-primary {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-light));
-    color: white;
+    background: var(--primary-color);
+    color: #FFFFFF;
     padding: 14px 20px;
-    border-radius: 10px;
+    border-radius: 999px;
     border: none;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(90, 48, 125, 0.3);
+    box-shadow: 0 4px 15px rgba(201, 168, 106, 0.3);
     transition: all 0.2s ease;
     width: 100%;
     text-align: center;
 }
 
 .btn-primary:hover {
+    background: var(--primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(90, 48, 125, 0.4);
+    box-shadow: 0 6px 20px rgba(201, 168, 106, 0.4);
 }
 
 .btn-primary:active {
@@ -523,4 +524,9 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus {
 }
 .tag:active {
     transform: scale(0.95);
+}
+.tag-label input:checked + .tag {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
 }

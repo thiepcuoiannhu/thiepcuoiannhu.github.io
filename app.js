@@ -193,6 +193,7 @@ document.getElementById('weddingForm').addEventListener('submit', async (e) => {
             IN_SO_DO: formData.get('IN_SO_DO') ? 'Có' : 'Không',
             IN_QR_CODE: formData.get('IN_QR_CODE') ? 'Có' : 'Không',
             IN_TEN_KHACH: formData.get('IN_TEN_KHACH') ? 'Có' : 'Không',
+            THIEP_WEB: formData.get('THIEP_WEB') ? 'Có' : 'Không',
             TOC_DO_IN: formData.get('TOC_DO_IN') || 'In tiết kiệm (6-8 ngày)'
         };
         
@@ -247,21 +248,21 @@ function generateSummaryImage(details, code) {
     const canvas = document.getElementById('summaryCanvas');
     const ctx = canvas.getContext('2d');
     
-    // Kích thước chuẩn 9:16 cho điện thoại (1080x1920 pixel) nhưng tăng lên 2200 để vừa địa chỉ
+    // Kích thước chuẩn 9:16 cho điện thoại (1080x1920 pixel) nhưng tăng lên 2300 để vừa địa chỉ và dịch vụ
     const W = 1080;
-    const H = 2200;
+    const H = 2300;
     canvas.width = W;
     canvas.height = H;
     
-    // --- Nền gradient tím nhạt ---
+    // --- Nền gradient ---
     const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-    bgGrad.addColorStop(0, '#FAF7FC');
-    bgGrad.addColorStop(1, '#EADCF5');
+    bgGrad.addColorStop(0, '#FFFFFF');
+    bgGrad.addColorStop(1, '#FCFBF8');
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, W, H);
     
     // --- Trang trí góc ---
-    ctx.fillStyle = 'rgba(150, 123, 182, 0.06)';
+    ctx.fillStyle = 'rgba(201, 168, 106, 0.1)';
     ctx.beginPath();
     ctx.arc(0, 0, 300, 0, Math.PI * 2);
     ctx.fill();
@@ -272,18 +273,18 @@ function generateSummaryImage(details, code) {
     // --- Tiêu đề ---
     let y = 80;
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#5a307d';
+    ctx.fillStyle = '#C9A86A';
     ctx.font = 'bold 52px Playfair Display, serif';
     ctx.fillText('Thiệp Cưới An Như', W / 2, y);
     
     y += 50;
-    ctx.fillStyle = '#685370';
+    ctx.fillStyle = '#5F5F5F';
     ctx.font = 'italic 28px Playfair Display, serif';
     ctx.fillText('Phiếu Thông Tin In Thiệp Cưới', W / 2, y);
     
     // --- Đường kẻ trang trí ---
     y += 35;
-    ctx.strokeStyle = '#d4af37';
+    ctx.strokeStyle = '#C9A86A';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(200, y);
@@ -292,7 +293,7 @@ function generateSummaryImage(details, code) {
     
     // --- Tên dâu rể (thay cho mã đồng bộ) ---
     y += 50;
-    ctx.fillStyle = '#5a307d';
+    ctx.fillStyle = '#C9A86A';
     ctx.font = 'bold 36px Outfit, sans-serif';
     const brideGroomName = (details.TEN_CHURE || 'CHÚ RỂ') + ' ❤ ' + (details.TEN_CODAU || 'CÔ DÂU');
     ctx.fillText(brideGroomName, W / 2, y);
@@ -303,12 +304,12 @@ function generateSummaryImage(details, code) {
         
         // Tiêu đề section
         ctx.textAlign = 'left';
-        ctx.fillStyle = '#5a307d';
+        ctx.fillStyle = '#C9A86A';
         ctx.font = 'bold 32px Outfit, sans-serif';
         ctx.fillText(title, 80, currentY);
         
         currentY += 8;
-        ctx.strokeStyle = '#967bb6';
+        ctx.strokeStyle = '#ECE7E1';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(80, currentY);
@@ -319,11 +320,11 @@ function generateSummaryImage(details, code) {
         
         // Các dòng thông tin
         for (let item of items) {
-            ctx.fillStyle = '#685370';
+            ctx.fillStyle = '#5F5F5F';
             ctx.font = '26px Outfit, sans-serif';
             ctx.fillText(item.label + ':', 100, currentY);
             
-            ctx.fillStyle = '#382047';
+            ctx.fillStyle = '#1E1E1E';
             ctx.font = 'bold 28px Outfit, sans-serif';
             
             // Tự xuống dòng nếu chữ quá dài
@@ -391,12 +392,13 @@ function generateSummaryImage(details, code) {
         { label: 'In sơ đồ chỉ đường', value: details.IN_SO_DO },
         { label: 'In QR-code chỉ đường', value: details.IN_QR_CODE },
         { label: 'In tên khách', value: details.IN_TEN_KHACH },
+        { label: 'Thiệp website online', value: details.THIEP_WEB },
         { label: 'Tốc độ in', value: details.TOC_DO_IN }
     ], y + 10);
     
     // --- Footer ---
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#685370';
+    ctx.fillStyle = '#5F5F5F';
     ctx.font = '22px Outfit, sans-serif';
     ctx.fillText('Thiệp Cưới An Như — thongtinthiepcuoi.com', W / 2, H - 50);
     
